@@ -1,0 +1,122 @@
+[
+          {
+            "name": "Classic Cheeseburger",
+            "description": "Juicy beef patty topped with cheddar cheese, lettuce, tomato, and special sauce.",
+            "picture": "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/juicy-appetizing-hamburger-on-a-white-background-natalia-zaika.jpg",
+            "price": 399
+          },
+          {
+            "name": "Margherita Pizza",
+            "description": "Traditional Italian pizza topped with fresh tomatoes, mozzarella, basil, and olive oil.",
+            "picture": "https://thumbs.dreamstime.com/z/pizza-white-background-9753649.jpg?w=992",
+            "price": 500
+          },
+          {
+            "name": "Grilled Salmon",
+            "description": "Fresh Atlantic salmon grilled to perfection, served with steamed vegetables.",
+            "picture": "https://static.vecteezy.com/system/resources/previews/024/679/300/large_2x/grilled-salmon-with-lemon-butter-sauce-asparagus-and-roasted-potatoes-daylight-white-porcelain-plate-background-mediterranean-style-generative-ai-free-photo.jpeg",
+            "price": 875
+          },
+          {
+            "name": "Vegetarian Pasta",
+            "description": "Fettuccine pasta with sautéed vegetables in a creamy Alfredo sauce.",
+            "picture": "https://thumbs.dreamstime.com/z/pasta-tomatoes-plate-ukrainian-cuisine-photo-food-white-background-high-quality-246685984.jpg?w=992",
+            "price": 425
+          },
+          {
+            "name": "Chocolate Fudge Cake",
+            "description": "Decadent chocolate cake with fudge frosting, served with vanilla ice cream.",
+            "picture": "https://media.istockphoto.com/id/532564620/photo/piece-of-homemade-chocolate-fudge-cake-white-background.jpg?s=170667a&w=0&k=20&c=WEPBvskPI5QKGSRC9Kjr93vwGw9FpYopeWpO0qy9PYo=",
+            "price": 189
+          },
+          {
+            "name": "BBQ Ribs",
+            "description": "Tender, slow-cooked pork ribs smothered in smoky barbecue sauce.",
+            "picture": "https://media.istockphoto.com/id/182245919/photo/stack-of-pork-ribs.jpg?s=612x612&w=0&k=20&c=Y6PGzgUTnwZd2Xc4TszfJZUdzpJHszztaAddLTwc_2s=",
+            "price": 699
+          },
+          {
+            "name": "Caesar Salad",
+            "description": "Crisp romaine lettuce, garlic croutons, Parmesan cheese, and Caesar dressing.",
+            "picture": "https://media.istockphoto.com/id/465857643/photo/traditional-caesar-salad.jpg?s=612x612&w=0&k=20&c=4n_7QPBS3ZenRVZQEg2rNqrePFdqbl7R3F5NQpFUEio=",
+            "price": 450
+          },
+          {
+            "name": "Shrimp Scampi",
+            "description": "Jumbo shrimp sautéed in garlic butter sauce, served over linguine pasta.",
+            "picture": "https://img.freepik.com/premium-photo/shrimp-scampi-plate-white-background-generative-ai_918839-8849.jpg",
+            "price": 975
+          },
+          {
+            "name": "Vegetable Stir-Fry",
+            "description": "Assorted vegetables stir-fried in a savory soy sauce, served with white rice.",
+            "picture": "https://en.pimg.jp/070/880/115/1/70880115.jpg",
+            "price": 299
+          },
+          {
+            "name": "Chicken Parmesan",
+            "description": "Breaded chicken breast topped with marinara sauce and melted mozzarella, served with spaghetti.",
+            "picture": "https://img.freepik.com/premium-photo/plate-chicken-parmesan-with-spaghetti-side-basil_664644-2159.jpg",
+            "price": 550
+          },
+          {
+            "name": "Mushroom Swiss Burger",
+            "description": "Juicy beef patty topped with sautéed mushrooms and Swiss cheese, served with fries.",
+            "picture": "https://c8.alamy.com/comp/T2J0P4/mushroom-swiss-burger-T2J0P4.jpg",
+            "price": 375
+          },
+          {
+            "name": "Chicken Caesar Wrap",
+            "description": "Grilled chicken, romaine lettuce, Caesar dressing wrapped in a soft tortilla.",
+            "picture": "https://media.istockphoto.com/id/1151273838/photo/caesar-roll-with-chicken.jpg?s=612x612&w=0&k=20&c=w-z7QEOx3Om37PvqDNkXbZOztLCJauVlttyrjphy9zk=",
+            "price": 499
+          },
+          {
+            "name": "Seafood Paella",
+            "description": "Spanish saffron-infused rice with shrimp, mussels, clams, and chorizo.",
+            "picture": "https://previews.123rf.com/images/denira/denira1508/denira150800004/43783582-typical-spanish-seafood-paella-in-traditional-pan-isolated-on-white-background.jpg",
+            "price": 425
+          },
+          {
+            "name": "Caprese Salad",
+            "description": "Fresh mozzarella, tomatoes, and basil drizzled with balsamic glaze.",
+            "picture": "https://static.vecteezy.com/system/resources/previews/021/950/173/original/white-plate-with-caprese-salad-isolated-on-a-transparent-background-png.png",
+            "price": 335
+          },
+          {
+            "name": "Beef Tacos",
+            "description": "Seasoned ground beef, shredded lettuce, diced tomatoes, and cheese in soft tortillas.",
+            "picture": "https://media.istockphoto.com/id/1413248571/photo/two-tacos-with-ground-beef-and-lime-on-white-background.jpg?s=612x612&w=0&k=20&c=QJC5RzLFTdavb_Zu56vkaspg4a00rYv9nqTxSPCtdq8=",
+            "price": 500
+          },
+          {
+            "name": "Penne alla Vodka",
+            "description": "Penne pasta tossed in a creamy tomato vodka sauce with Parmesan cheese.",
+            "picture": "https://img.freepik.com/premium-photo/penne-pasta-with-bolognese-sauce-white-plate-gray-background-with-space-copy-traditional-italian-dish_166116-4409.jpg",
+            "price": 399
+          },
+          {
+            "name": "Veggie Burger",
+            "description": "House-made veggie patty topped with lettuce, tomato, and pickles, served with sweet potato fries.",
+            "picture": "https://c8.alamy.com/comp/HPXBB6/fresh-vegetarian-burger-isolated-on-white-background-HPXBB6.jpg",
+            "price": 500
+          },
+          {
+            "name": "Fish and Chips",
+            "description": "Crispy battered fish fillets served with seasoned fries and tartar sauce.",
+            "picture": "https://media.istockphoto.com/id/490523081/photo/fish-and-chips-on-white-plate-with-lemon-and-parsley.jpg?s=612x612&w=0&k=20&c=LFT5LukJAqzkM6OQZwRTdDGTiQ3_Kv_uOMVR-WHoi7g=",
+            "price": 450
+          },
+          {
+            "name": "Tiramisu",
+            "description": "Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cheese.",
+            "picture": "https://img.freepik.com/premium-photo/plate-with-tiramisu-cake-isolated-white-background_185193-77841.jpg?w=2000",
+            "price": 699
+          },
+          {
+            "name": "Spinach and Artichoke Dip",
+            "description": "Creamy spinach and artichoke dip served with tortilla chips.",
+            "picture": "https://modernminimalism.com/wp-content/uploads/2020/01/Instant-Pot-Spinach-Artichoke-Dip-Web-10.jpg",
+            "price": 825
+          }
+]
