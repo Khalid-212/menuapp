@@ -1,0 +1,30 @@
+.FoodListItem{
+    border-radius: 10px;
+    width: 35vw;
+    max-height: 150px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    gap: 1rem;
+}
+.foodNameList{
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+.foodDescriptionList{
+    font-size: 15px;
+    color: gray;
+    overflow: auto;
+}
+.foodPriceList{
+    color: orange;
+    font-size: 20px;
+    font-weight: bold
+}

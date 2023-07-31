@@ -5,9 +5,9 @@ function FoodCard({foodName, foodDescription, foodPrice, foodImage}) {
   return (
     <div className='foodCard'>
       <img src={foodImage} alt="food"/>
-        <div className='foodName'>{foodName}</div>
-        <div className='foodDescription'>{foodDescription}</div>
-        <div className='foodPrice'>{foodPrice + " ETB"}</div>
+        <div className='foodNameTile'>{foodName}</div>
+        <div className='foodDescriptionTile'>{foodDescription}</div>
+        <div className='foodPriceTile'>{foodPrice + " ETB"}</div>
     </div>
   )
 }
