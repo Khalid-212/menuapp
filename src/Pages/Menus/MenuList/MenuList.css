@@ -21,7 +21,7 @@
     background-color: #FFF1E4;
     color: orange;
 }
-.menuWrapper{
+.menuWrapperList{
     display: flex;
     flex-direction: column;
 }

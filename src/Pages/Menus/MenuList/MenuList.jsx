@@ -18,7 +18,7 @@ function MenuList() {
     "Drinks",
   ];
   const [currentCategory, setCurrentCategory] = useState(
-    "Burgers & Sandwiches"
+    "All"
   );
 
   const handleCategoryChange = (category) => {
@@ -31,7 +31,7 @@ function MenuList() {
   };
   return (
     <div className="MenuList center">
-      <Header />
+      <Header pageTitle={"Menu"} />
       <div className="categoryChips">
         {categories.map((category) => (
           <div
@@ -45,7 +45,7 @@ function MenuList() {
           </div>
         ))}
       </div>
-      <div className="menuWrapper">
+      <div className="menuWrapperList">
       {currentData.map((item) => {
         return (
           <FoodListItem

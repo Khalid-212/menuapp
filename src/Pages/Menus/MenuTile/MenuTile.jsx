@@ -18,7 +18,7 @@ function MenuTile() {
     "Drinks",
   ];
   const [currentCategory, setCurrentCategory] = useState(
-    "Burgers & Sandwiches"
+    "All"
   );
 
   const handleCategoryChange = (category) => {
@@ -32,7 +32,7 @@ function MenuTile() {
 
   return (
     <div className="menu">
-      <Header />
+      <Header pageTitle={"Menu"} />
       {/* category chips */}
       <div className="categoryChips">
         {categories.map((category) => (
@@ -47,7 +47,7 @@ function MenuTile() {
           </div>
         ))}
       </div>
-      <div className="menuWrapper">
+      <div className="menuWrapperTile">
         {currentData.length > 0 ? (
           currentData.map((data) => (
             <FoodCard
