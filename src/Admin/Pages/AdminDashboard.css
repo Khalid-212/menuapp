@@ -1,0 +1,115 @@
+/* AdminDashboard.css */
+
+.admin-dashboard {
+    max-width: 70%;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    align-items: center;
+    /* border: 3px solid rebeccapurple; */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    border-radius: 20px;
+
+}
+
+/* Form Styles */
+.food-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.food-form input,
+.food-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.food-form textarea {
+    resize: vertical;
+}
+
+.food-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.food-form button:hover {
+    background-color: #45a049;
+}
+/* Food List Styles */
+.food-list {
+    /* border: 3px solid rebeccapurple; */
+    /* margin-bottom: 2rem; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    height: 65vh;
+    overflow: auto;
+    place-items: center;
+    width: 600px;
+    
+  }
+  
+  /* Food Card Styles */
+  .food-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .food-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .food-card h3 {
+    margin: 10px 0;
+  }
+  
+  .food-card p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  /* Food Actions Styles */
+  .food-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    /* background-color: #45a049; */
+  }
+  
+  .food-actions button {
+    padding: 10px 40px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #E74C3C;
+    color: white;
+    transition: background-color 0.2s;
+  }
+  .food-actions button:first-child{
+    background-color: rgb(232, 203, 73);
+    color: black;
+  }
+  
+  .food-actions button:hover {
+    background-color: #C0392B;
+  }
+  
