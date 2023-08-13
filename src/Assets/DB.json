@@ -4,7 +4,7 @@
   "phone": "123-456-7890",
   "menu": [
     {
-      "name": "Classic Cheeseburger",
+      "name": "normal beff burger",
       "description": "Juicy beef patty topped with cheddar cheese, lettuce, tomato, and special sauce.",
       "picture": "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/juicy-appetizing-hamburger-on-a-white-background-natalia-zaika.jpg",
       "price": 399,
@@ -45,6 +45,7 @@
       "price": 699,
       "category": "Seafood"
     },
+
     {
       "name": "Caesar Salad",
       "description": "Crisp romaine lettuce, garlic croutons, Parmesan cheese, and Caesar dressing.",

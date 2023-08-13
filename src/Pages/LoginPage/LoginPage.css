@@ -1,53 +1,64 @@
-.LoginPage{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
+.LoginPage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
-.form{
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    gap: 2rem;
+.login_logo {
+  width: 150px;
+  /* height: 150px; */
 }
-.form h1{
-    color: #ee7d1a;
+.form {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  gap: 2rem;
 }
-.formInput{
-    padding: 12px 20px;
-    width: 100%;
-    line-height: 20px;
-    font-size: 14px;
-    text-align: start;
-    color: rgb(223, 195, 102);
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-    border-radius: 6px;
-    border: 0.5px solid orange;
-    outline: none;
+.form h1 {
+  color: #ee7d1a;
 }
-.formInput::placeholder{
-    color: rgb(244, 189, 86);
+.formInput {
+  padding: 12px 20px;
+  width: 100%;
+  line-height: 20px;
+  font-size: 14px;
+  text-align: start;
+  color: rgb(223, 195, 102);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  border-radius: 6px;
+  border: 0.5px solid orange;
+  outline: none;
 }
-.formInput::placeholder:focus{
-    display: none;
+.formInput::placeholder {
+  color: rgb(244, 189, 86);
 }
-.btnSubmit{
-    padding: 12px 20px;
-    color: orange;
-    background-color: #FFF0E3;
-    width: 100%;
-    border-radius: 6px;
-    border: 0.5px solid orange;
-    outline: none;
+.formInput::placeholder:focus {
+  display: none;
 }
-.btnSubmit:hover{
-    color: #ffff;
-    background-color: #f4c9a4;
-    border: transparent;
-    cursor: pointer;
+.btnSubmit {
+  padding: 12px 20px;
+  color: orange;
+  background-color: #fff0e3;
+  width: 100%;
+  border-radius: 6px;
+  border: 0.5px solid orange;
+  outline: none;
+}
+.btnSubmit:hover {
+  color: #ffff;
+  background-color: #f4c9a4;
+  border: transparent;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .form{
+    width: 80%;
+  }
 }
