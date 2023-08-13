@@ -1,12 +1,30 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "./MenuList.css";
 import FoodListItem from "../../../Components/FoodListItem/FoodListItem";
 import database from "../../../Assets/DB.json";
 import Header from "../../../Components/Header/Header";
+import { getMenuItems } from "../../../supabase";
+import { useParams } from "react-router-dom";
 
 function MenuList() {
-  const db = database.menu;
-  const [currentData, setCurrentData] = useState(db);
+  const { id } = useParams();
+  const [menuItems, setMenuItems] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState("Pizzas");
+  const [filteredMenuItems, setFilteredMenuItems] = useState([]);
+
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      try {
+        const fetchedMenuItems = await getMenuItems(id); // Use the URL param ID
+        setMenuItems(fetchedMenuItems);
+        setFilteredMenuItems(fetchedMenuItems); // Initialize filtered items
+      } catch (error) {
+        console.error("Error fetching menu items:", error);
+      }
+    };
+    fetchMenuItems();
+  }, [id]);
+
   const categories = [
     "All",
     "Burgers & Sandwiches",
@@ -17,15 +35,18 @@ function MenuList() {
     "Salads",
     "Drinks",
   ];
-  const [currentCategory, setCurrentCategory] = useState(
-    "All"
-  );
+
+  useEffect(() => {
+    setFilteredMenuItems(menuItems); // Initialize with fetched menu items
+  }, [menuItems]);
 
   const handleCategoryChange = (category) => {
     if (category === "All") {
-      setCurrentData(db);
+      setFilteredMenuItems(menuItems);
     } else {
-      setCurrentData(db.filter((data) => data.category === category));
+      setFilteredMenuItems(
+        menuItems.filter((item) => item.category === category)
+      );
     }
     setCurrentCategory(category);
   };
@@ -46,17 +67,20 @@ function MenuList() {
         ))}
       </div>
       <div className="menuWrapperList">
-      {currentData.map((item) => {
-        return (
-          <FoodListItem
-          fooddescription={item.description}
-          foodname={item.name}
-          foodprice={item.price +" ETB"}
-          />
-          );
-        })}
+        {filteredMenuItems ? (
+          filteredMenuItems.map((data) => (
+            <FoodListItem
+              key={data.image}
+              foodName={data.name}
+              foodDescription={data.description}
+              foodPrice={data.price}
+            />
+          ))
+        ) : (
+          <p>No items found for the selected category.</p>
+        )}
+      </div>
     </div>
-        </div>
   );
 }
 

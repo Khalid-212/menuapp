@@ -1,12 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FoodCard from "../../../Components/FoodCard/FoodCard";
 import "./MenuTile.css";
-import database from "../../../Assets/DB.json";
 import Header from "../../../Components/Header/Header";
+import { useParams } from "react-router-dom";
+import { getMenuItems } from "../../../supabase";
 
 function MenuTile() {
-  const db = database.menu;
-  const [currentData, setCurrentData] = useState(db);
+  const { id } = useParams();
+  const [menuItems, setMenuItems] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState("Pizzas");
+  const [filteredMenuItems, setFilteredMenuItems] = useState([]);
+
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      try {
+        const fetchedMenuItems = await getMenuItems(id); // Use the URL param ID
+        setMenuItems(fetchedMenuItems);
+        setFilteredMenuItems(fetchedMenuItems); // Initialize filtered items
+      } catch (error) {
+        console.error("Error fetching menu items:", error);
+      }
+    };
+    fetchMenuItems();
+  }, [id]);
+
   const categories = [
     "All",
     "Burgers & Sandwiches",
@@ -17,23 +34,26 @@ function MenuTile() {
     "Salads",
     "Drinks",
   ];
-  const [currentCategory, setCurrentCategory] = useState(
-    "All"
-  );
+
+  useEffect(() => {
+    setFilteredMenuItems(menuItems); // Initialize with fetched menu items
+  }, [menuItems]);
 
   const handleCategoryChange = (category) => {
     if (category === "All") {
-      setCurrentData(db);
+      setFilteredMenuItems(menuItems);
     } else {
-      setCurrentData(db.filter((data) => data.category === category));
+      setFilteredMenuItems(
+        menuItems.filter((item) => item.category === category)
+      );
     }
     setCurrentCategory(category);
   };
+  console.log(filteredMenuItems)
 
   return (
     <div className="menu">
       <Header pageTitle={"Menu"} />
-      {/* category chips */}
       <div className="categoryChips">
         {categories.map((category) => (
           <div
@@ -48,13 +68,13 @@ function MenuTile() {
         ))}
       </div>
       <div className="menuWrapperTile">
-        {currentData.length > 0 ? (
-          currentData.map((data) => (
+        {filteredMenuItems ? (
+          filteredMenuItems.map((data,key) => (
             <FoodCard
-              key={data.image}
+              key={key}
               foodName={data.name}
               foodDescription={data.description}
-              foodImage={data.picture}
+              foodImage={data.image_url}
               foodPrice={data.price}
             />
           ))

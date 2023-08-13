@@ -28,3 +28,21 @@
     font-size: 20px;
     font-weight: bold
 }
+
+@media screen and (max-width: 560px) {
+.FoodListItem{
+    width: 80vw;
+}
+.foodDescriptionList{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 80%;
+}
+}
+
+@media screen  and (max-width:780px) {
+    .FoodListItem{
+        width: 80vw;
+    }
+}
