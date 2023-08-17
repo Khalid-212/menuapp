@@ -7,6 +7,7 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import SignupPage from "./Pages/SignupPage/SignupPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import { useSelector } from "react-redux";
+import SuperAdmin from "./Admin/Pages/SuperAdmin/SuperAdmin";
 
 function App() {
   const Loggding = useSelector((state) => state.user.user);
@@ -17,6 +18,10 @@ function App() {
         <Route
           path="/login"
           element={Loggding ? <AdminDashboard /> : <LoginPage />}
+        />
+        <Route
+          path="/loginn"
+          element={Loggding ? <SuperAdmin /> : <LoginPage />}
         />
         {/* <Route path="/signup" element={<SignupPage />} /> */}
         <Route

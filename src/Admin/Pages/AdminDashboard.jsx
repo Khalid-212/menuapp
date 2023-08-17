@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import FoodCard from "../../Components/FoodCard/FoodCard";
 import "./AdminDashboard.css";
+import SyncLoader from "react-spinners/ClipLoader";
 import {
   addMenuItem,
+  addQRCodeOrder,
   getMenuItems,
+  getRestaurantById,
   removeMenuItem,
   updateMenuItem,
 } from "../../supabase";
@@ -13,9 +16,27 @@ import { Link } from "react-scroll";
 import copy from "../../Assets/copy.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FileUpload from "../../Components/FileUpload/FileUpload";
+import { SupabaseClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
+import { v4 as uuidv4 } from "uuid";
 
 function AdminDashboard() {
   const [foodData, setFoodData] = useState([]);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [QrCodeRequest, setQrCodeRequest] = useState(false);
+  const requestQrCode = () => {
+    if (foodData.length > 0) {
+      addQRCodeOrder(currentUser, restaurant.name).then((res) => {
+        console.log(res);
+        // setQrCodeRequest(true);
+        toast.success("QR Code Requested Successfully");
+      });
+    } else {
+      toast.error("Please add some food first");
+    }
+  };
+
   const [currentFood, setCurrentFood] = useState({
     name: "",
     price: 0,
@@ -26,7 +47,7 @@ function AdminDashboard() {
   const currentUser = useSelector((state) => state.user.user);
   const [currentFoodIndex, setCurrentFoodIndex] = useState(-1);
 
-  console.log("food", currentUser);
+  // console.log("food", currentUser);
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
@@ -90,7 +111,6 @@ function AdminDashboard() {
 
   const handleDeleteFood = async (foodIndex) => {
     const updatedFoodData = foodData.filter((_, index) => index !== foodIndex);
-    // print the removed item to the console
     console.log("removed", foodData[foodIndex]);
     await removeMenuItem(foodData[foodIndex].item_id).then((res) => {
       console.log(res);
@@ -100,6 +120,29 @@ function AdminDashboard() {
   };
 
   const url = window.location.href.split("/admin")[0];
+  const categories = [
+    "Burgers & Sandwiches",
+    "Pizzas",
+    "Pastas",
+    "Desserts",
+    "Seafood",
+    "Salads",
+    "Drinks",
+    "Habesha Dishes",
+  ];
+
+  const [restaurant, setRestaurant] = useState(null);
+
+  const getRestaurantByInfo = async () => {
+    await getRestaurantById(currentUser).then((res) => {
+      console.log(res);
+      setRestaurant(res);
+    });
+  };
+
+  useEffect(() => {
+    getRestaurantByInfo();
+  }, []);
 
   return (
     <>
@@ -112,7 +155,8 @@ function AdminDashboard() {
         rtl={false}
         theme="colored"
       />
-      <Header pageTitle={"Admin"} />
+      <Header pageTitle={restaurant ? restaurant.name : "Admin"} />
+
       <div className="restaurant-link">
         your menu link
         <p>{`${url}/menu/${currentUser}`}</p>
@@ -139,6 +183,24 @@ function AdminDashboard() {
           </button>
         </div>
       </div>
+      <div className="qrcode-request">
+        {/* request qr code form */}
+        <div className="request-form">
+          <form>
+            <button
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                requestQrCode();
+              }}
+            >
+              Request Qr Code
+            </button>
+          </form>
+        </div>
+        {/*  */}
+      </div>
+
       <div className="admin-dashboard">
         <form className="food-form">
           {/* Input fields for food properties */}
@@ -175,21 +237,44 @@ function AdminDashboard() {
               setCurrentFood({ ...currentFood, description: e.target.value })
             }
           />
-          <input
-            type="text"
-            placeholder="Category"
+          <select
             value={currentFood.category}
+            required
             onChange={(e) =>
               setCurrentFood({ ...currentFood, category: e.target.value })
             }
-          />
-          <button type="button" onClick={handleAddFood}>
-            Add Food
-          </button>
+          >
+            <option value="">Select a category</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
           <br />
-          <button type="button" onClick={handleUpdateFood}>
-            Update Food
-          </button>
+          {isEditMode ? (
+            <p></p>
+          ) : (
+            <button
+              type="submit"
+              onClick={handleAddFood}
+              // disabled={!isFormComplete}
+              // className={`form-button ${!isFormComplete ? "disabled" : ""}`}
+            >
+              Add Food
+            </button>
+          )}
+          <br />
+          {isEditMode && (
+            <button
+              type="submit"
+              onClick={handleUpdateFood}
+              // disabled={!isFormComplete}
+              // className={`form-button ${!isFormComplete ? "disabled" : ""}`}
+            >
+              Update Food
+            </button>
+          )}
         </form>
         <div className="food-list">
           {foodData.length > 0 ? (
@@ -211,19 +296,41 @@ function AdminDashboard() {
                     offset={-70}
                     duration={500}
                   >
-                    <button onClick={() => setCurrentFood(food)}>Edit</button>
+                    <button
+                      onClick={() => {
+                        setCurrentFood(food);
+                        setIsEditMode(true);
+                      }}
+                    >
+                      Edit
+                    </button>
                   </Link>
-                  <button onClick={() => handleDeleteFood(index)}>
-                    Delete
-                  </button>
+                  {isEditMode ? (
+                    <p></p>
+                  ) : (
+                    <button onClick={() => handleDeleteFood(index)}>
+                      Delete
+                    </button>
+                  )}
                 </div>
               </div>
             ))
           ) : (
-            <p>Loading...</p>
+            <SyncLoader />
           )}
         </div>
       </div>
+      {/* <div className="qrcode-request">
+        <FileUpload onUpload={handleOnUpload}>
+          {({ open }) => {
+            function handleOnClick(e) {
+              e.preventDefault();
+              open();
+            }
+            return <button onClick={handleOnClick}>Upload file</button>;
+          }}
+        </FileUpload>
+      </div> */}
     </>
   );
 }

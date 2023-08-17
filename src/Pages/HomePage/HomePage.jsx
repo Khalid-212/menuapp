@@ -51,6 +51,8 @@ function HomePage() {
       </header>
 
       {/* Features */}
+      <br />
+      <br />
 
       <div className="features-header">Features</div>
       <div id="features" className="features">
@@ -86,6 +88,9 @@ function HomePage() {
               <li>3 Qr code sets</li>
               <li>live customer support</li>
             </div>
+            <div className="order">
+              order
+            </div>
           </div>
           <div className="pricing-plan yearly">
             yearly 17% discount
@@ -117,9 +122,11 @@ function HomePage() {
               <div className="howItWorks-step">
                 <div className="step-number">1</div>
                 <div className="step-text">
-                  <div className="step-text-header">Sign Up</div>
+                  <div className="step-text-header">
+                    Get your account details
+                  </div>
                   <div className="step-text-body">
-                    Sign up with your email and phone number.
+                    Get your account details by contacting menu plus
                   </div>
                 </div>
               </div>
@@ -144,7 +151,7 @@ function HomePage() {
                 <div className="step-text">
                   <div className="step-text-header">Generate QR Code</div>
                   <div className="step-text-body">
-                    Generate QR code for your menu and print it.
+                    Order QR code for your menu.
                   </div>
                 </div>
               </div>
@@ -175,8 +182,8 @@ function HomePage() {
           </div>
           <br />
           <div>
-            <strong>Adress: </strong>
-            <span>AddisAbaba , Ethiopia</span>
+            <strong>Address: </strong>
+            <span>Addis Ababa , Ethiopia</span>
           </div>
           <div>
             <strong>Phone: </strong>
@@ -223,7 +230,7 @@ function HomePage() {
         <div className="footer-text">
           <div className="footer-text-header">Menu Plus</div>
           <div className="footer-text-copy">
-            © 2021 Menu Plus. All rights reserved.
+            © 2023 Menu Plus. All rights reserved.
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ import { getMenuItems } from "../../../supabase";
 function MenuTile() {
   const { id } = useParams();
   const [menuItems, setMenuItems] = useState([]);
-  const [currentCategory, setCurrentCategory] = useState("Pizzas");
+  const [currentCategory, setCurrentCategory] = useState("All");
   const [filteredMenuItems, setFilteredMenuItems] = useState([]);
 
   useEffect(() => {
@@ -33,6 +33,7 @@ function MenuTile() {
     "Seafood",
     "Salads",
     "Drinks",
+    "Habesha Dishes",
   ];
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function MenuTile() {
     }
     setCurrentCategory(category);
   };
-  console.log(filteredMenuItems)
+  console.log(filteredMenuItems);
 
   return (
     <div className="menu">
@@ -69,7 +70,7 @@ function MenuTile() {
       </div>
       <div className="menuWrapperTile">
         {filteredMenuItems ? (
-          filteredMenuItems.map((data,key) => (
+          filteredMenuItems.map((data, key) => (
             <FoodCard
               key={key}
               foodName={data.name}
