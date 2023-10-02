@@ -4,7 +4,7 @@ import "./MenuTile.css";
 import Header from "../../../Components/Header/Header";
 import { Link, useParams } from "react-router-dom";
 import { getMenuItems } from "../../../supabase";
-import { SyncLoader } from "react-spinners";
+import { BarLoader, SyncLoader } from "react-spinners";
 import { useDispatch } from "react-redux";
 import {paying} from "../../../PaymentSlice";
 // import { login } from "../../UserSlice";
@@ -96,7 +96,7 @@ function MenuTile() {
             />
           ))
         ) : (
-          <SyncLoader />
+          <BarLoader />
           // <p>No items found for the selected category.</p>
         )}
       </div>

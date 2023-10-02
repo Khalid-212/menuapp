@@ -37,7 +37,7 @@ function App() {
         />
         <Route
           path="/payment"
-          element={payment==="ispaying" ? <PaymentPage /> : "Page Not Found"}
+          element={<PaymentPage />}
         />
         <Route path="/listmenu:id" element={<MenuList />} />
         <Route path="/menu/:id" element={<MenuTile />} />{" "}

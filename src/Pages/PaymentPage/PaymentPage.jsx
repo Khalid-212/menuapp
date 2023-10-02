@@ -14,8 +14,6 @@ function PaymentPage() {
   const ref = refgen();
   return (
     <div>
-      {ispaying ? (
-        <div>
           <Header />
 
           <form
@@ -77,12 +75,6 @@ function PaymentPage() {
             </button>
           </form>
         </div>
-      ) : (
-        <div>
-          <h1>Page not found</h1>
-        </div>
-      )}
-    </div>
   );
 }
 
