@@ -1,0 +1,17 @@
+.input{
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.paymentForm{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    padding: 2rem;
+    justify-content: center;
+    border: 1px solid orange;
+    border-radius: 15px;
+    width: 30%;
+}

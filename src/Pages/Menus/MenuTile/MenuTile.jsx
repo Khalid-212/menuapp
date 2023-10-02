@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import FoodCard from "../../../Components/FoodCard/FoodCard";
 import "./MenuTile.css";
 import Header from "../../../Components/Header/Header";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getMenuItems } from "../../../supabase";
+import { SyncLoader } from "react-spinners";
+import { useDispatch } from "react-redux";
+import {paying} from "../../../PaymentSlice";
+// import { login } from "../../UserSlice";
+
 
 function MenuTile() {
   const { id } = useParams();
@@ -51,10 +56,21 @@ function MenuTile() {
     setCurrentCategory(category);
   };
   console.log(filteredMenuItems);
+  const dispatch = useDispatch();
 
   return (
     <div className="menu">
       <Header pageTitle={"Menu"} />
+      <Link to="/payment">
+      <button className="btnpay" onClick={
+        () => {
+          dispatch(paying("ispaying"));
+          window.location.href = "/payment";
+        }
+      }>
+        {"Pay >"}
+      </button>
+      </Link>
       <div className="categoryChips">
         {categories.map((category) => (
           <div
@@ -80,7 +96,8 @@ function MenuTile() {
             />
           ))
         ) : (
-          <p>No items found for the selected category.</p>
+          <SyncLoader />
+          // <p>No items found for the selected category.</p>
         )}
       </div>
     </div>
