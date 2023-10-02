@@ -10,6 +10,7 @@ import {
   removeMenuItem,
   updateMenuItem,
 } from "../../supabase";
+import { StorageClient } from '@supabase/storage-js'
 import { useSelector } from "react-redux";
 import Header from "../../Components/Header/Header";
 import { Link } from "react-scroll";
@@ -36,6 +37,39 @@ function AdminDashboard() {
       toast.error("Please add some food first");
     }
   };
+  const [file, setFile] = useState(null);
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const uploadFileToStorage = async () => {
+    try {
+      if (!file) {
+        toast.error("Please select an image file.");
+        return;
+      }
+
+      const fileName = `menu_images/${uuidv4()}_${file.name}`;
+
+
+      const { data, error } = await StorageClient
+      .from(currentUser)
+      .upload(fileName, file);
+
+    if (error) {
+      toast.error("Error uploading the image.");
+      return null;
+    }
+
+    const imageUrl = data.Key;
+
+    return imageUrl;
+  } catch (error) {
+    console.error("Error uploading file:", error);
+    toast.error("Error uploading file.");
+    return null;
+  }
+};
 
   const [currentFood, setCurrentFood] = useState({
     name: "",
@@ -59,21 +93,30 @@ function AdminDashboard() {
     };
     fetchMenuItems();
   }, [currentUser]);
-
   const handleAddFood = async () => {
-    console.log("Current Food:", currentFood);
-    await addMenuItem({
-      restaurant_id: currentUser,
-      name: currentFood.name,
-      description: currentFood.description,
-      price: currentFood.price,
-      image_url: currentFood.picture,
-      category: currentFood.category,
-    }).then((res) => {
-      console.log(res);
-    });
-    setFoodData([...foodData, currentFood]);
-    toast.success("Food Added Successfully");
+    try {
+      const imageUrl = await uploadFileToStorage(); // Upload the image
+
+      if (!imageUrl) {
+        return; // Exit if there was an error with file upload
+      }
+
+      // Add the menu item with the image URL to the database
+      await addMenuItem({
+        restaurant_id: currentUser,
+        name: currentFood.name,
+        description: currentFood.description,
+        price: currentFood.price,
+        image_url: imageUrl, // Use the uploaded image URL
+        category: currentFood.category,
+      });
+
+      setFoodData([...foodData, currentFood]);
+      toast.success("Food Added Successfully");
+    } catch (error) {
+      console.error("Error adding food:", error);
+      toast.error("Error adding food.");
+    }
   };
 
   const handleUpdateFood = async () => {
@@ -161,7 +204,7 @@ function AdminDashboard() {
         your menu link
         <p>{`${url}/menu/${currentUser}`}</p>
         <div class="tooltip">
-          <a href={`/menu/${currentUser}`}>
+          <a href={`/menu/${currentUser}`} target="_blank">
             <img
               width="24"
               height="24"
@@ -222,14 +265,12 @@ function AdminDashboard() {
               setCurrentFood({ ...currentFood, price: e.target.value })
             }
           />
-          <input
-            type="text"
-            placeholder="Image URL"
-            value={currentFood.picture}
-            onChange={(e) =>
-              setCurrentFood({ ...currentFood, picture: e.target.value })
-            }
-          />
+      <input
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+        />
+        <br />
           <textarea
             placeholder="Description"
             value={currentFood.description}

@@ -8,9 +8,12 @@ import SignupPage from "./Pages/SignupPage/SignupPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import { useSelector } from "react-redux";
 import SuperAdmin from "./Admin/Pages/SuperAdmin/SuperAdmin";
+import PaymentPage from "./Pages/PaymentPage/PaymentPage";
 
 function App() {
   const Loggding = useSelector((state) => state.user.user);
+  const payment = useSelector((state) => state.payment.payment);
+  console.log("payment: "+payment)
   return (
     <div className="App">
       <Routes>
@@ -27,6 +30,14 @@ function App() {
         <Route
           path="/admin"
           element={Loggding ? <AdminDashboard /> : <LoginPage />}
+        />
+        <Route
+          path="/thankyou"
+          element={ "Thank You"}
+        />
+        <Route
+          path="/payment"
+          element={payment==="ispaying" ? <PaymentPage /> : "Page Not Found"}
         />
         <Route path="/listmenu:id" element={<MenuList />} />
         <Route path="/menu/:id" element={<MenuTile />} />{" "}

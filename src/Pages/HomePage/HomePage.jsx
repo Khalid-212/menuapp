@@ -31,7 +31,7 @@ function HomePage() {
             <div className="banner-text">
               <div className="tagline">
                 <div className="tagline-big">
-                  Digitalize Your Menu With
+                  Digitalising Your Menu With
                   <br />
                   Menu Plus
                 </div>
@@ -82,20 +82,18 @@ function HomePage() {
           <div className="pricing-plan monthly">
             Monthly
             <br />
-            <div className="price">300/month</div>
+            <div className="price">1134.9 for 1 month</div>
             <div className="services">
               <li>Digital menu</li>
               <li>3 Qr code sets</li>
               <li>live customer support</li>
             </div>
-            <div className="order">
-              order
-            </div>
+            <div className="order">order</div>
           </div>
           <div className="pricing-plan yearly">
-            yearly 17% discount
+            Huge discount
             <br />
-            <div className="price">3000/year</div>
+            <div className="price">~ 4529.9 for 1 year</div>
             <div className="services">
               <li>Digital menu</li>
               <li>3 Qr code sets</li>
@@ -105,7 +103,7 @@ function HomePage() {
           <div className="pricing-plan halfyear">
             Half Yearly
             <br />
-            <div className="price">1700/6 monthes</div>
+            <div className="price">2269.9 for 6 monthes</div>
             <div className="services">
               <li>Digital menu</li>
               <li>3 Qr code sets</li>

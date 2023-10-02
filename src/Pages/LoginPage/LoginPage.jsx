@@ -10,11 +10,6 @@ import logo from "../../assets/../Assets/logo.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL,
-  process.env.REACT_APP_SUPABASE_API_KEY
-);
-
 function LoginPage() {
   const navigate = useNavigate();
   const {
